@@ -1,0 +1,33 @@
+Bootstrap: library
+From: alpine:latest
+
+%help
+    uchime v4.2.40 is donated to the public domain. Removes chimera sequences, outputs to two files and streams remaining sequences to stdout.
+
+%labels
+    Version 4.2.40
+    AppName uchime v4.2.40
+    Maintainer B. Leopold, benjamin.leopold@jax.org
+
+%environment
+    export PATH="/opt/bin:$PATH"
+
+%post
+    apk update && \
+    apk add --no-cache curl
+
+    mkdir -p /opt/bin
+    cd /opt/bin
+
+    # Public domain version of uchime
+    curl https://drive5.com/uchime/uchime4.2.40_i86linux32 -o uchime
+    # Uchime recommended ChimeraSlayer database
+    curl http://drive5.com/uchime/gold.fa -o gold.fa
+
+    chmod +x uchime
+
+%runscript
+    exec uchime "$@"
+
+
+# vim: set ft=Singularity.sh ts=4 sw=0 tw=100 et cms=#\ %s fdm=manual:
