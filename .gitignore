@@ -1,0 +1,40 @@
+Global gitignore: ~/.gitignore_global
+#  OSX ignores
+.DS_Store
+Icon
+._*
+.Spotlight-*
+.Trashes
+
+#  Linux ignores
+!.gitignore
+*~
+
+#  Vim ignores
+.*.sw[a-z]
+*.un~
+Session.vim
+
+# Ignore tags created by ctags
+# case-insensitive [Tt]
+[Tt][Aa][Gg][Ss]
+.[Tt][Aa][Gg][Ss]
+tags-*
+!tags/
+
+# Pythonic
+__pycache__/
+*.py[cod]
+*$py.class
+# C extensions
+*.so
+# Distribution / packaging
+pip-delete-this-directory.txt
+# Environments
+.env
+.venv
+env/
+venv/
+
+# Containers:
+*.sif
