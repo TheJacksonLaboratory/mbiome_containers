@@ -1,7 +1,7 @@
 FROM alpine:latest
 
-ARG app_version
-ENV app_version ${app_version:-1.2.11}
+ENV app_name flash
+ARG app_version=1.2.11
 ENV app_path FLASH-${app_version}
 
 LABEL app.name "FLASH v${app_version}" \
@@ -11,8 +11,7 @@ LABEL app.name "FLASH v${app_version}" \
       maintainer "B. Leopold, benjamin.leopold@jax.org"
 
 WORKDIR /opt
-RUN mkdir -p bin ${app_path}
-ENV PATH "/opt/${app_path}:/opt/bin:$PATH"
+ENV PATH "/opt/${app_path}:$PATH"
 
 RUN apk update && \
     apk add --no-cache \
@@ -31,5 +30,5 @@ RUN wget ${app_url} -O ${app_file} && \
     cd ${app_path} && \
     make
 
-ENTRYPOINT flash
+ENTRYPOINT ["flash"]
 CMD ["--help"]
