@@ -10,14 +10,15 @@ LABEL app.name="uchime v${app_version}" \
 
 WORKDIR /opt/bin
 ENV PATH "/opt/bin:$PATH"
+RUN apk add --no-cache bash
 
 # Public domain version of uchime
 # and Uchime's recommended ChimeraSlayer database
-ADD https://drive5.com/uchime/uchime4.2.40_i86linux32, \
-    http://drive5.com/uchime/gold.fa ./
+ADD https://drive5.com/uchime/uchime4.2.40_i86linux32 \
+    https://drive5.com/uchime/gold.fa ./
 
 RUN mv uchime4.2.40_i86linux32 uchime && \
     chmod +x uchime
 
 ENTRYPOINT ["uchime"]
-CMD ["--help"]
+CMD ["--version"]
