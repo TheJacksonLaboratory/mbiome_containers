@@ -1,3 +1,1 @@
-# wrapper file for: rdpclassifier__2.12__cometsong.sif
-bin=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P) && source ${bin}/sing_exec.sh
-sing_exec rdpclassifier__2.12__cometsong.sif rdpclassifier $*
+rdpclassifier__2.12.sh
