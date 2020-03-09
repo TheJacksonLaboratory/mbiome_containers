@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 ENV app_name mmseqs
-ARG app_vers=latest
+ARG app_vers=11-e1a1c
 ENV app_path ${app_name}
 
 LABEL app.name="mmseqs2" \
@@ -19,12 +19,12 @@ RUN apk update && \
         tar \
         bash
 
-ENV app_url=https://mmseqs.com/${app_vers} \
-    app_file=mmseqs-linux-avx2.tar.gz
+ENV app_url=https://github.com/soedinglab/MMseqs2/releases/download/${app_vers} \
+    app_file=MMseqs2-Linux-AVX2.tar.gz
 
 # install latest release:
 RUN curl -SL ${app_url}/${app_file} \
-    | tar xzC ${app_path}
+    | tar xz
 
 ENTRYPOINT ["mmseqs"]
 CMD ["-h"]
